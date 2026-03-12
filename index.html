@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Valorant Pro Overlay</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0; padding: 0;
+            background-color: transparent !important;
+            display: flex; align-items: center;
+            height: 100vh; font-family: 'Syncopate', sans-serif;
+        }
+
+        #overlay-container { display: flex; align-items: center; padding: 20px; min-height: 250px; }
+
+        /* --- LOGO MEJORADO --- */
+        #rank-icon {
+            width: 115px; height: 115px;
+            margin-right: 20px; display: none;
+            /* Doble filtro: Sombra negra para definir + Glow para estilo */
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.8)) drop-shadow(0px 0px 15px rgba(179, 0, 10, 0.5));
+            transition: all 0.5s ease;
+        }
+
+        .radiant-mode #rank-icon {
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.8)) drop-shadow(0px 0px 20px rgba(255, 215, 0, 0.6));
+        }
+
+        .text-wrapper { display: flex; flex-direction: column; justify-content: center; }
+
+        #full-text {
+            text-transform: uppercase; white-space: nowrap;
+            font-size: 50px; font-weight: 700; letter-spacing: -2px;
+            position: relative;
+            background: linear-gradient(to bottom, #b3000a 20%, #000000 90%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 1));
+            line-height: 1.1;
+        }
+
+        .radiant-mode #full-text {
+            background: linear-gradient(to bottom, #ffe100 20%, #8b6d00 90%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        #top-rank {
+            font-size: 32px; color: #000000; 
+            text-transform: uppercase; font-weight: 700;
+            margin-top: 5px; letter-spacing: 1px;
+            text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+            display: block;
+        }
+
+        #full-text::after {
+            content: attr(data-text);
+            position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+            background: linear-gradient(120deg, transparent 0%, transparent 40%, rgba(255, 255, 255, 0.8) 50%, transparent 60%, transparent 100%);
+            background-size: 200% 100%;
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+            animation: shimmer 3s infinite linear; z-index: 2;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</head>
+<body>
+    <div id="overlay-container">
+        <img id="rank-icon" src="" alt="rank">
+        <div class="text-wrapper">
+            <div id="full-text" data-text="CARGANDO...">CARGANDO...</div>
+            <div id="top-rank">TOP #---</div> 
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
