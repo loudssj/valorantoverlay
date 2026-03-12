@@ -1,5 +1,5 @@
 const API_KEY = 'HDEV-6424e066-5519-4322-a837-71ebe6465911';
-const player = "x velxinssj";
+const player = "loud";
 const tag = "brr";
 const region = "latam";
 
@@ -56,4 +56,5 @@ updateOverlay();
 
 // INTERVALO CORTO: Actualiza cada 30 segundos para que sea más "real"
 // No pongas menos de 30 o la API te puede banear la key por exceso de peticiones.
+
 setInterval(updateOverlay, 30000);
